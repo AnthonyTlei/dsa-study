@@ -4,6 +4,8 @@
 #include <cstddef>
 #include <stdexcept>
 #include <iostream>
+#include <sstream>
+#include <algorithm>
 
 template <typename T>
 class Array {
@@ -20,6 +22,9 @@ public:
     void add(T elem);
     void removeAt(int index);
     void remove(T elem);
+    int indexOf(T elem);
+    bool contains(T elem);
+    std::string toString() const;
 
 private:
     T* data;
@@ -111,12 +116,41 @@ void Array<T>::remove(T elem) {
 }
 
 template <typename T>
+int Array<T>::indexOf(T elem) {
+    for (int i=0; i < length; ++i) {
+        if (data[i] == elem) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+template <typename T>
+bool Array<T>::contains(T elem) {
+    return indexOf(elem) != -1;
+}
+
+template <typename T>
 void Array<T>::resize(int newCapacity) {
     T* newData = new T[newCapacity];
     std::copy(data, data + length, newData);
     delete[] data;
     data = newData;
     capacity = newCapacity;
+}
+
+template <typename T>
+std::string Array<T>::toString() const {
+    std::ostringstream oss;
+    oss << "[";
+    for (int i = 0; i < length; ++i) {
+        oss << data[i];
+        if (i < length - 1) {
+            oss << ", ";
+        }
+    }
+    oss << "]";
+    return oss.str();
 }
 
 #endif /* Array_hpp */

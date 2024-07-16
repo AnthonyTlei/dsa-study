@@ -29,6 +29,7 @@
 		A58F01212C3AA1EE00C6F39F /* Test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Test.cpp; sourceTree = "<group>"; };
 		A58F01222C3AA1EE00C6F39F /* Test.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Test.hpp; sourceTree = "<group>"; };
 		A58F01282C3AA43200C6F39F /* Array.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Array.hpp; sourceTree = "<group>"; };
+		A5BCD4BA2C455AFA00FBFAE4 /* DoublyLinkedList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DoublyLinkedList.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +71,7 @@
 		A58F011C2C3AA1BA00C6F39F /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				A5BCD4B82C455ACE00FBFAE4 /* DoublyLinkedList */,
 				A58F01262C3AA41A00C6F39F /* Array */,
 				A58F01252C3AA41000C6F39F /* Test */,
 			);
@@ -91,6 +93,14 @@
 				A58F01282C3AA43200C6F39F /* Array.hpp */,
 			);
 			name = Array;
+			sourceTree = "<group>";
+		};
+		A5BCD4B82C455ACE00FBFAE4 /* DoublyLinkedList */ = {
+			isa = PBXGroup;
+			children = (
+				A5BCD4BA2C455AFA00FBFAE4 /* DoublyLinkedList.hpp */,
+			);
+			name = DoublyLinkedList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
