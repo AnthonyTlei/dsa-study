@@ -18,7 +18,7 @@ public:
     T peek() const;
     
 private:
-    DoublyLinkedList<T>* _stack = nullptr;
+    DoublyLinkedList<T>* _stack;
 };
 
 template <typename T>
