@@ -10,11 +10,12 @@ class Stack {
 public:
     Stack();
     Stack(T elem);
+    ~Stack();
     int size() const;
     bool isEmpty() const;
     void push(T elem);
     T pop();
-    T peek();
+    T peek() const;
     
 private:
     DoublyLinkedList<T>* _stack = nullptr;
@@ -29,6 +30,11 @@ template <typename T>
 Stack<T>::Stack(T elem) {
     _stack = new DoublyLinkedList<T>;
     _stack->addFirst(elem);
+}
+
+template <typename T>
+Stack<T>::~Stack() {
+    delete _stack;
 }
 
 template <typename T>
@@ -48,11 +54,17 @@ void Stack<T>::push(T elem) {
 
 template <typename T>
 T Stack<T>::pop() {
+    if (isEmpty()) {
+        throw std::out_of_range("Stack is empty");
+    }
     return _stack->removeFirst();
 }
 
 template <typename T>
-T Stack<T>::peek() {
+T Stack<T>::peek() const {
+    if (isEmpty()) {
+        throw std::out_of_range("Stack is empty");
+    }
     return _stack->peekFirst();
 }
 
