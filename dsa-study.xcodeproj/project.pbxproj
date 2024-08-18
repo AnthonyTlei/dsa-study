@@ -30,6 +30,7 @@
 		A58F01222C3AA1EE00C6F39F /* Test.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Test.hpp; sourceTree = "<group>"; };
 		A58F01282C3AA43200C6F39F /* Array.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Array.hpp; sourceTree = "<group>"; };
 		A5B4035F2C5105E700152D81 /* PQueue.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PQueue.hpp; sourceTree = "<group>"; };
+		A5BC33A62C71E12B00F782BF /* UnionFind.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UnionFind.hpp; sourceTree = "<group>"; };
 		A5BCD4BA2C455AFA00FBFAE4 /* DoublyLinkedList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DoublyLinkedList.hpp; sourceTree = "<group>"; };
 		A5BCD4BE2C4902AA00FBFAE4 /* Stack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Stack.hpp; sourceTree = "<group>"; };
 		A5BCD4C22C494D8500FBFAE4 /* Queue.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Queue.hpp; sourceTree = "<group>"; };
@@ -74,6 +75,7 @@
 		A58F011C2C3AA1BA00C6F39F /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				A5BC33A42C71E11A00F782BF /* UnionFind */,
 				A5B4035D2C5105D200152D81 /* PQueue */,
 				A5BCD4C02C494D7700FBFAE4 /* Queue */,
 				A5BCD4BC2C49029B00FBFAE4 /* Stack */,
@@ -107,6 +109,14 @@
 				A5B4035F2C5105E700152D81 /* PQueue.hpp */,
 			);
 			name = PQueue;
+			sourceTree = "<group>";
+		};
+		A5BC33A42C71E11A00F782BF /* UnionFind */ = {
+			isa = PBXGroup;
+			children = (
+				A5BC33A62C71E12B00F782BF /* UnionFind.hpp */,
+			);
+			name = UnionFind;
 			sourceTree = "<group>";
 		};
 		A5BCD4B82C455ACE00FBFAE4 /* DoublyLinkedList */ = {
