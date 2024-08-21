@@ -9,65 +9,84 @@
 #include "classes/Queue.hpp"
 #include "classes/PQueue.hpp"
 #include "classes/UnionFind.hpp"
-
-// Edge structure to hold graph edges
-struct Edge {
-    int u, v;
-    int weight;
-    
-    bool operator<(const Edge& other) const {
-        return weight < other.weight;
-    }
-};
-
-// Kruskal's algorithm
-std::vector<Edge> kruskal(int n, std::vector<Edge>& edges) {
-    UnionFind<int> uf;
-    std::vector<Edge> mst; // To store the resulting MST
-    
-    // Step 1: Initialize UnionFind for all nodes
-    for (int i = 0; i < n; ++i) {
-        uf.make_set(i);
-    }
-    
-    // Step 2: Sort edges by weight
-    std::sort(edges.begin(), edges.end());
-    
-    // Step 3: Iterate over edges and add them to the MST if they don't form a cycle
-    for (const auto& edge : edges) {
-        if (!uf.connected(edge.u, edge.v)) {
-            uf.union_sets(edge.u, edge.v);
-            mst.push_back(edge);
-        }
-    }
-    
-    return mst;
-}
+#include "classes/BinarySearchTree.hpp"
 
 int main() {
-    
-    // We're gonna test the union find by trying Kruskal's algorithm
-    
-    // Define the number of vertices in the graph
-    int n = 4;
-    
-    // Define the edges of the graph (u, v, weight)
-    std::vector<Edge> edges = {
-        {0, 1, 10},
-        {0, 2, 6},
-        {0, 3, 5},
-        {1, 3, 15},
-        {2, 3, 4}
-    };
-    
-    // Run Kruskal's algorithm
-    std::vector<Edge> mst = kruskal(n, edges);
-    
-    // Print the edges in the MST
-    std::cout << "Edges in the Minimum Spanning Tree:" << std::endl;
-    for (const auto& edge : mst) {
-        std::cout << edge.u << " - " << edge.v << " : " << edge.weight << std::endl;
-    }
+    // Create a BinarySearchTree of integers
+    BinarySearchTree<int> bst;
+
+    // Test isEmpty on an empty tree
+    std::cout << "Is tree empty? " << bst.isEmpty() << " (Expected: 1)\n"; // Expected: 1 (true)
+
+    // Test add method
+    bst.add(10);
+    bst.add(5);
+    bst.add(15);
+    bst.add(3);
+    bst.add(7);
+    bst.add(13);
+    bst.add(18);
+
+    // Test isEmpty after adding elements
+    std::cout << "Is tree empty? " << bst.isEmpty() << " (Expected: 0)\n"; // Expected: 0 (false)
+
+    // Test size method
+    std::cout << "Tree size: " << bst.size() << " (Expected: 7)\n"; // Expected: 7
+
+    // Test min method
+    std::cout << "Minimum value: " << bst.min() << " (Expected: 3)\n"; // Expected: 3
+
+    // Test max method
+    std::cout << "Maximum value: " << bst.max() << " (Expected: 18)\n"; // Expected: 18
+
+    // Test height method
+    std::cout << "Tree height: " << bst.height() << " (Expected: 2)\n"; // Expected: 2
+
+    // Test contains method
+    std::cout << "Contains 7? " << bst.contains(7) << " (Expected: 1)\n"; // Expected: 1 (true)
+    std::cout << "Contains 4? " << bst.contains(4) << " (Expected: 0)\n"; // Expected: 0 (false)
+
+    // Test traversal methods
+    std::cout << "In-order traversal: ";
+    bst.traverse(BinarySearchTree<int>::TraversalOrder::IN_ORDER); // Expected: 3 5 7 10 13 15 18
+    std::cout << std::endl;
+
+    std::cout << "Pre-order traversal: ";
+    bst.traverse(BinarySearchTree<int>::TraversalOrder::PRE_ORDER); // Expected: 10 5 3 7 15 13 18
+    std::cout << std::endl;
+
+    std::cout << "Post-order traversal: ";
+    bst.traverse(BinarySearchTree<int>::TraversalOrder::POST_ORDER); // Expected: 3 7 5 13 18 15 10
+    std::cout << std::endl;
+
+    std::cout << "Level-order traversal: ";
+    bst.traverse(BinarySearchTree<int>::TraversalOrder::LEVEL_ORDER); // Expected: 10 5 15 3 7 13 18
+    std::cout << std::endl;
+
+    // Test remove method
+    bst.remove(15); // Removing a node with two children
+    std::cout << "After removing 15, in-order traversal: ";
+    bst.traverse(BinarySearchTree<int>::TraversalOrder::IN_ORDER); // Expected: 3 5 7 10 13 18
+    std::cout << std::endl;
+
+    bst.remove(5); // Removing a node with two children
+    std::cout << "After removing 5, in-order traversal: ";
+    bst.traverse(BinarySearchTree<int>::TraversalOrder::IN_ORDER); // Expected: 3 7 10 13 18
+    std::cout << std::endl;
+
+    bst.remove(3); // Removing a leaf node
+    std::cout << "After removing 3, in-order traversal: ";
+    bst.traverse(BinarySearchTree<int>::TraversalOrder::IN_ORDER); // Expected: 7 10 13 18
+    std::cout << std::endl;
+
+    bst.remove(10); // Removing the root node
+    std::cout << "After removing 10, in-order traversal: ";
+    bst.traverse(BinarySearchTree<int>::TraversalOrder::IN_ORDER); // Expected: 7 13 18
+    std::cout << std::endl;
+
+    // Test clear method
+    bst.clear();
+    std::cout << "After clearing, is tree empty? " << bst.isEmpty() << " (Expected: 1)\n"; // Expected: 1 (true)
 
     return 0;
 }
